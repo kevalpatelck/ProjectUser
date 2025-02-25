@@ -1,23 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
-import Header from './components/Header';
 import Homepage from './components/Homepage';
 import Properties from './components/Properties';
 import Singleproperty from './components/Singleproperty';
 import Contact from './components/Contact';
 import{BrowserRouter,Route,Routes} from 'react-router-dom';
-import Login from './components/Login';
-import Register from './components/Register';
+
 import Footer from './components/Footer';
-import Adminpannel from "./Admin/Adminpannel";
-import Dashboard from "./Admin/Dashboard";
-import Analytics from "./Admin/Analytics";
-import Messages from "./Admin/Messages";
-import Settings from "./Admin/Settings";
-import AddTurfForm from './Admin/AddTurfForm';
-import ManageTurfs from './Admin/ManageTurfs';
-import ManageBookings from './Admin/ManageBookings';
-import ViewBookings from './Admin/ViewBookings';
 import Subhed from './components/Subhed';
 
 function App() {

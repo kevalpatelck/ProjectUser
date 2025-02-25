@@ -21,8 +21,8 @@ function Header() {
               <div className="col-12">
                 <nav className="main-nav">
                   {/* ***** Logo Start ***** */}
-                  <Link to="/" className="logo">
-                    <h1>Turfs</h1>
+                  <Link to="/" style={{alignItems:"center", marginTop:"20px"}}>
+                    <h1>BookMyTurf</h1>
                   </Link>
                   {/* ***** Logo End ***** */}
                   {/* ***** Menu Start ***** */}
