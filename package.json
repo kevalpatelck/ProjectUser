@@ -12,9 +12,7 @@
     "react-slick": "^0.30.3",
     "slick-carousel": "^1.8.1"
   },
-  "devDependencies": {
-  "@babel/plugin-proposal-private-property-in-object": "^7.17.5"
-},
+  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
