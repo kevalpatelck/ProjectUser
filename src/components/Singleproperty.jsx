@@ -22,9 +22,9 @@ function SingleProperty() {
   }, [fetchTurfDetails]);
   
 
-  const fetchTurfDetails =  useCallback( async() => {
+  const fetchTurfDetails =  useCallback(() => {
     try {
-      const response = await axios.get(
+      const response =  axios.get(
         `https://cricket-box-booking.onrender.com/api/user/turfs/${id}`
       );
       console.log("Fetched Turf Data:", response.data.turf);
