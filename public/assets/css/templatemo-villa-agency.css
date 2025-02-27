@@ -1872,6 +1872,11 @@ this is floater image css
   background-color: #f8f9fa;
 }
 
+
+.iframe {
+  pointer-events: none;
+}
+
 .floating-images-container .section-title {
   font-size: 36px;
   margin-bottom: 40px;
