@@ -181,8 +181,11 @@ function Contact() {
                             <div className="col-lg-12">
                                 <div id="map">
                                     <iframe
+                                        title="Google maps"
                                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.003496002368!2d72.81324387503616!3d21.19202008049844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04c2a4688790d%3A0xd5371b0166210725!2sCoderKube%20Technologies!5e0!3m2!1sen!2sin!4v1739362517912!5m2!1sen!2sin"
                                         width="100%"
+                                        loading="lazy"
+                                        referrerPolicy="no-referrer-when-downgrade"
                                         height="500px"
                                         frameBorder={0}
                                         style={{

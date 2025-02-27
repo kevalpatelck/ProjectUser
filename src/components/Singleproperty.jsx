@@ -20,6 +20,7 @@ function SingleProperty() {
   useEffect(() => {
     fetchTurfDetails();
   }, []);
+  
 
   const fetchTurfDetails = async () => {
     try {
