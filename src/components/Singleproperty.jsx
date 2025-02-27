@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useCallback} from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Slider from "react-slick";
@@ -22,7 +22,7 @@ function SingleProperty() {
   }, [fetchTurfDetails]);
   
 
-  const fetchTurfDetails = async () => {
+  const fetchTurfDetails =  useCallback( async() => {
     try {
       const response = await axios.get(
         `https://cricket-box-booking.onrender.com/api/user/turfs/${id}`
@@ -32,7 +32,7 @@ function SingleProperty() {
     } catch (error) {
       console.error("Error fetching turf details:", error);
     }
-  };
+  },[]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
