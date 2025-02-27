@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
 import Header from './Header';
 import axios from 'axios';
 
