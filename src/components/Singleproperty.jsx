@@ -1,4 +1,4 @@
-import React, { useEffect, useState ,useCallback} from "react";
+import React, { useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Slider from "react-slick";
@@ -9,6 +9,8 @@ import Header from "./Header";
 function SingleProperty() {
   const { id } = useParams();
   const [turf, setTurf] = useState(null);
+  console.log("for display turf",turf);
+  
   const [selectedSlots, setSelectedSlots] = useState([]); // Store selected slots in an array
   const [formData, setFormData] = useState({
     name: "",
@@ -19,20 +21,21 @@ function SingleProperty() {
 
   useEffect(() => {
     fetchTurfDetails();
-  }, [fetchTurfDetails]);
-  
+  }, [id]);
 
-  const fetchTurfDetails =  useCallback(() => {
+  const fetchTurfDetails = async () => { 
     try {
-      const response =  axios.get(
+      const response = await  axios.get(
         `https://cricket-box-booking.onrender.com/api/user/turfs/${id}`
       );
       console.log("Fetched Turf Data:", response.data.turf);
       setTurf(response.data.turf);
     } catch (error) {
-      console.error("Error fetching turf details:", error);
+      console.log("Error fetching turf details:", JSON.stringify(error));
     }
-  },[]);
+  }
+  
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -93,9 +96,9 @@ function SingleProperty() {
     }
   };
 
-  if (!turf) {
-    return <p>Loading...</p>;
-  }
+  // if (!turf) {
+  //   return <p>Loading...</p>;
+  // }
 
   // React Slick settings for the image slideshow
   const sliderSettings = {
@@ -115,12 +118,12 @@ function SingleProperty() {
         <div className="container">
           <div className="row">
             <div className="col-lg-8">
-              <h2>{turf.name}</h2>
+              <h2>{turf?.name}</h2>
             
               {/* Image Slideshow */}
               <div className="image-slider">
                 <Slider {...sliderSettings}>
-                  {turf.images?.map((image, index) => (
+                  {turf?.images?.map((image, index) => (
                     <div key={index}>
                       <img
                         src={`https://cricket-box-booking.onrender.com/${image}`}
@@ -134,22 +137,22 @@ function SingleProperty() {
               </div>
 
               <p>
-                <strong>Full Address :</strong> {turf.address1}, {turf.address2},{" "}
-                {turf.city}, {turf.landmark}, {turf.zipCode}
+                <strong>Full Address :</strong> {turf?.address1}, {turf?.address2},{" "}
+                {turf?.city}, {turf?.landmark}, {turf?.zipCode}
               </p>
               <p>
-                <strong>Coordinates:</strong> Lat: {turf.location.lat}, Lng: {turf.location.lng}
+                <strong>Coordinates:</strong> Lat: {turf?.location.lat}, Lng: {turf?.location.lng}
               </p>
-              <p><strong>City :  </strong>  {turf.city}</p>
-              <p><strong>First Adress :</strong> {turf.address1} </p>
-              <p><strong>Second Adress :</strong> {turf.address2}</p>
-              <p><strong>Zip Code :</strong> {turf.zipcode}</p>
+              <p><strong>City :  </strong>  {turf?.city}</p>
+              <p><strong>First Adress :</strong> {turf?.address1} </p>
+              <p><strong>Second Adress :</strong> {turf?.address2}</p>
+              <p><strong>Zip Code :</strong> {turf?.zipcode}</p>
 
               {/* <p>
                 <strong>Available Slots:</strong>
               </p> */}
               <ul>
-                {turf.slots?.map((slot, index) => (
+                {turf?.slots?.map((slot, index) => (
                   <li key={index}>
                     <strong>Start:</strong> {slot.startTime} |{" "}
                     <strong>End:</strong> {slot.endTime} |
@@ -172,7 +175,7 @@ function SingleProperty() {
                       type="text"
                       name="name"
                       className="form-control"
-                      value={formData.name}
+                      value={formData?.name}
                       onChange={handleChange}
                       required
                     />
@@ -226,7 +229,7 @@ function SingleProperty() {
                       onChange={handleSlotChange}
                       required
                     >
-                      {turf.timeSlots?.map((slot) => (
+                      {turf?.timeSlots?.map((slot) => (
                         <option key={slot._id} value={JSON.stringify(slot)}>
                           {slot.startTime} - {slot.endTime} | ₹{slot.price}
                         </option>

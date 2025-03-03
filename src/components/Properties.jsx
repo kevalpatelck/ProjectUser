@@ -76,7 +76,7 @@ function Properties() {
               <br/>
               <div className="image-slider">
                 <Slider {...sliderSettings}>
-                  {turf.images?.map((image, index) => (
+                  {turf?.images?.map((image, index) => (
                     <div key={index}>
                       <img
                         src={`https://cricket-box-booking.onrender.com/${image}`}
